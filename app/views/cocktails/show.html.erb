@@ -1,0 +1,30 @@
+<% content_for(:title) do %>
+  <% "#{@cocktail.name}: recipe" %>
+<% end %>
+<h1><%= @cocktail.name %></h1>
+
+
+<h3>Ingredients:</h3>
+
+<div class="ingredients-card">
+  <ul class='list-unstyled'>
+    <% @cocktail.doses.each do |dose| %>
+    <li class = 'ingredient-list'>
+      <%= dose.description %> <%= Ingredient.find(dose.ingredient_id).name %>
+      <%= link_to 'remove ingredient', dose_path(dose), method: :delete, class: 'btn btn-danger' %>
+    </li>
+    <% end %>
+  </ul>
+</div>
+
+
+<div class="cocktail-links">
+  <%= link_to 'Back to cocktails', cocktails_path, class: 'btn btn-primary' %>
+  <%= link_to 'add ingredient', new_cocktail_dose_path(@cocktail), class: 'btn btn-success' %>
+</div>
+
+
+put into modal?:
+<div class="ingredient-form">
+  <%= render 'doses/form'  %>
+</div>

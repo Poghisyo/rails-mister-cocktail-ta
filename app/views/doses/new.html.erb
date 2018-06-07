@@ -1,0 +1,7 @@
+<% content_for(:title) do %>
+  <% "#{@cocktail.name}: Add an ingredient" %>
+<% end %>
+
+<%=  render 'form' %>
+
+<%= link_to 'cancel', cocktail_path(@cocktail)  %>
